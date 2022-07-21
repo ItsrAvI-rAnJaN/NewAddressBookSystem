@@ -62,5 +62,80 @@ namespace AddressBookSystem
                 Console.WriteLine("Email Address : {0}", address.Email);
             }
         }
+        public void EditContactDetails()
+        {
+            Console.WriteLine("Enter The First Name for Edit The Contact");
+            string First_Name = Console.ReadLine();
+            foreach (AddressBooks address in AddressList)
+            {
+                if (address.First_Name == First_Name)
+                {
+                    // Taking Input by User Which Field want to Edit 
+                    Console.WriteLine("1. First Name");
+                    Console.WriteLine("2. Last Name");
+                    Console.WriteLine("3. Address");
+                    Console.WriteLine("4. City");
+                    Console.WriteLine("5. state");
+                    Console.WriteLine("6. Zip Code ");
+                    Console.WriteLine("7. Phone Number ");
+                    Console.WriteLine("8. Email Address");
+                    Console.WriteLine("Enter the Field you Want to Edit ");
+                    int Choice = Convert.ToInt32(Console.ReadLine());
+
+                    // using Switch to Edit The Field Choose By User
+                    switch (Choice)
+                    {
+                        case 1:
+                            Console.Write("New First Name : ");
+                            string New_First_Name = Console.ReadLine();
+                            address.First_Name = New_First_Name;
+                            break;
+                        case 2:
+                            Console.Write("New Last Name : ");
+                            string New_Last_Name = Console.ReadLine();
+                            address.Last_Name = New_Last_Name;
+                            break;
+                        case 3:
+                            Console.Write("New Address : ");
+                            string New_Address = Console.ReadLine();
+                            address.Address = New_Address;
+                            break;
+                        case 4:
+                            Console.Write("New City : ");
+                            string New_City = Console.ReadLine();
+                            address.City = New_City;
+                            break;
+                        case 5:
+                            Console.Write("New State : ");
+                            string New_State = Console.ReadLine();
+                            address.State = New_State;
+                            break;
+                        case 6:
+                            Console.Write("New Zip Code : ");
+                            int New_Zip_Code = Convert.ToInt32(Console.ReadLine());
+                            address.Zip_Code = New_Zip_Code;
+                            break;
+                        case 7:
+                            Console.Write("New Phone Number : ");
+                            long New_Ph_Number = Convert.ToInt64(Console.ReadLine());
+                            address.Ph_Number = New_Ph_Number;
+                            break;
+                        case 8:
+                            Console.Write("New Email Address : ");
+                            string New_Email = Console.ReadLine();
+                            address.Email= New_Email;
+                            break;
+                        default:
+                            Console.WriteLine(" Please Enter Correct Choice");
+                            break;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine(" Your Input Didn't Present in the Address Books");
+                }
+            }
+        }
     }
 }
