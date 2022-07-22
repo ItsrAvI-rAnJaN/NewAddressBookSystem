@@ -13,10 +13,11 @@ namespace AddressBookSystem
             do
             {
                 Console.WriteLine("\n0.Exit");
-                Console.WriteLine("1.Get Contact Present in Address Book ");
+                Console.WriteLine("1. Get Contact Present in Address Book ");
                 Console.WriteLine("2. Add New Contact to Address Book");
                 Console.WriteLine("3. Edit Contact Present in Address Book");
-                Console.WriteLine("4.Delete Contact Using Person's First Name");
+                Console.WriteLine("4. Delete Contact Using Person's First Name");
+                Console.WriteLine("5. Add Multiple Contact into Address Books");
                 Console.Write("\nEnter Your Choice : ");
                 Choice = Convert.ToInt32(Console.ReadLine());
                 switch (Choice)
@@ -65,7 +66,7 @@ namespace AddressBookSystem
                         }
 
                         // Asking to delete the Contact Details if Y then Proceed..
-                        Console.WriteLine(" Delete Contact Using First Name ? Y/N");
+                        Console.WriteLine("Delete Contact Using First Name ? Y/N");
                         Console.Write("Enter Your Choice : ");
                         string Choice4_2 = Console.ReadLine();
                         if (Choice4_2 == "Y")
@@ -77,8 +78,59 @@ namespace AddressBookSystem
                             objDeleteAddress.DisplayContactDetails();
                         }
                         break;
+                    case 5:
+                        AddMultiContact objMultiContact = new AddMultiContact();
+                    Add:
+                        Console.WriteLine("Enter Details Below ?: Y/N ");
+                        Console.Write("Enter Your Choice : ");
+                        string Choice5_1 = Console.ReadLine();
+                        if (Choice5_1 == "Y")
+                        {
+                            objMultiContact.AddMultiNewContact();
+                            objMultiContact.DisplayContactDetails();
+                            goto Add;
+                        }
+                    // Asking User to Edit Contact Details.
+                    Edit:
+                        if (objMultiContact.AddressList.Count > 0) //Check no. of Contact is greater than 0.
+                        {
+                            Console.WriteLine("Edit Contact Using first Name ? Y/N");
+                            Console.Write("Enter Your Choice : ");
+                            string Choice5_2 = Console.ReadLine();
+                            if (Choice5_2 == "Y")
+                            {
+                                objMultiContact.EditContactDetails();
+                                objMultiContact.DisplayContactDetails();
+                                goto Edit;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contact Details Not Present in Address Book");
+                        }
+                    Delete:
+                        if (objMultiContact.AddressList.Count > 0)
+                        {
+                            // Asking to delete the Contact Details if Y then Proceed..
+                            Console.WriteLine("Delete Contact Using First Name ? Y/N");
+                            Console.Write("Enter Your Choice : ");
+                            string Choice5_2 = Console.ReadLine();
+                            if (Choice5_2 == "Y")
+                            {
+                                objMultiContact.EditContactDetails();
+                                objMultiContact.DisplayContactDetails();
+                                goto Delete;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contact Details Not Present in Address Book for Deletion..");
+
+                        }
+                        break;
+
                     default:
-                        Console.WriteLine(" Enter Correct Choice");
+                        Console.WriteLine("Enter Correct Choice");
                         break;
                 }
 
