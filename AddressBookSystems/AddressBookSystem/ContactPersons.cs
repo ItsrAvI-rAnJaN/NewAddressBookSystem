@@ -123,17 +123,37 @@ namespace AddressBookSystem
                         case 8:
                             Console.Write("New Email Address : ");
                             string New_Email = Console.ReadLine();
-                            address.Email= New_Email;
+                            address.Email = New_Email;
                             break;
                         default:
-                            Console.WriteLine(" Please Enter Correct Choice");
+                            Console.WriteLine("Please Enter Correct Choice");
                             break;
                     }
 
                 }
                 else
                 {
-                    Console.WriteLine(" Your Input Didn't Present in the Address Books");
+                    Console.WriteLine("Your Input Didn't Present in the Address Books");
+                }
+            }
+        }
+        // crearing Method fo Deleting Contact..
+        public void DeleteContactDetails()
+        {
+            // Taking Input(First Name) From User to Delete Contact Details.
+            Console.Write("Enter The First Name of Contact Detail You Want to Delete : ");
+            String DeleteContacts = Console.ReadLine();   // storing Input Taken by User
+            foreach (AddressBooks Delete in AddressList)
+            {
+                if (Delete.First_Name == DeleteContacts)
+                {
+                    AddressList.Remove(Delete);
+                    Console.WriteLine("Contact Details Removed");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input First Name You Enter Not Present in Address Book");
                 }
             }
         }

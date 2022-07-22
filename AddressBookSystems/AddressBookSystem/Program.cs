@@ -16,6 +16,7 @@ namespace AddressBookSystem
                 Console.WriteLine("1.Get Contact Present in Address Book ");
                 Console.WriteLine("2. Add New Contact to Address Book");
                 Console.WriteLine("3. Edit Contact Present in Address Book");
+                Console.WriteLine("4.Delete Contact Using Person's First Name");
                 Console.Write("\nEnter Your Choice : ");
                 Choice = Convert.ToInt32(Console.ReadLine());
                 switch (Choice)
@@ -45,6 +46,35 @@ namespace AddressBookSystem
                         {
                             objeditcontact.EditContactDetails();
                             objeditcontact.DisplayContactDetails();
+                        }
+                        break;
+                    case 4:
+                        // Creting instance of call the Method to Edit & Delete Contactg Details.
+                        ContactPersons objDeleteAddress = new ContactPersons();
+                        objDeleteAddress.AddNewContact();
+                        objDeleteAddress.DisplayContactDetails();
+
+                        // Asking to Edit Contact if Y then Proceed.
+                        Console.WriteLine("Edit Contact Using first Name ? Y/N");
+                        Console.Write("Enter Your Choice : ");
+                        string Choice4_1 = Console.ReadLine();
+                        if (Choice4_1 == "Y")
+                        {
+                            objDeleteAddress.EditContactDetails();
+                            objDeleteAddress.DisplayContactDetails();
+                        }
+
+                        // Asking to delete the Contact Details if Y then Proceed..
+                        Console.WriteLine(" Delete Contact Using First Name ? Y/N");
+                        Console.Write("Enter Your Choice : ");
+                        string Choice4_2 = Console.ReadLine();
+                        if (Choice4_2 == "Y")
+                        {
+                            objDeleteAddress.DeleteContactDetails();
+                        }
+                        else
+                        {
+                            objDeleteAddress.DisplayContactDetails();
                         }
                         break;
                     default:
